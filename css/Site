@@ -1,0 +1,97 @@
+/*propriedadeess  */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    
+   width: 100%; /* << MUDE DE 300% PARA 100% */
+   height: 180px; /* << MUDE DE 250px PARA auto */
+    padding-bottom: 20px; /* Adiciona um respiro embaixo */
+   background: linear-gradient(rgb(235, 229, 229), rgb(252, 252, 252)),
+    center ;
+    
+    
+  
+    
+}
+
+
+
+body {
+    width: 100%;
+    
+}
+ #cabecalho {
+    display: flex;
+    flex-direction: column; /* Coloca os itens um EMBAIXO do outro */
+    align-items: center; /* Centraliza TUDO (logo E lista) no meio */
+}   
+
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+li {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(10, 3, 3);
+}
+.link-login{
+    text-decoration: none;
+    color:#8f5624ec;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #FFDAB9;
+}
+
+/* Class  e id's */
+
+#logo {
+    width: Auto;
+    margin: auto;
+    padding: 0;
+    height: 120px;
+    
+   
+  
+}
+
+.principal {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#cad-buton {
+    width: 200px;
+    
+}
+
+
+
+.lista-links {
+   
+   
+   
+   
+}
+a{
+ color: rgba(3, 3, 3, 0.801);
+}
+
+
