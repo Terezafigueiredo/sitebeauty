@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tereza Figueiredo Beauty Artist</title>
+    <link rel="stylesheet" href="./css/cadastro.css">
+</head>
+
+<body>
+
+<main id="formulario-main">
+  <div class="logo-container-externo">
+            <a href="site.html"> <img src="img/logo_png.png" alt="Logo Tereza Figueiredo" id="logo-externa">
+            </a>
+        </div>
+
+    <section class="principal">
+        <form class="tela-cadastro" id="form-cadastro">
+            <h1>Cadastro</h1>
+
+            <input type="text" id="nome" name="nome" placeholder="Nome:"><br>
+            <input type="email" id="email" name="email" placeholder="E-mail:"><br>
+            <input type="number" id="telefone" name="telefone" placeholder="Telefone:"><br>
+            <input type="password" name="senha" id="senha" placeholder="Senha:"><br>
+
+            <button type="submit" id="cad-buton">Cadastre-se</button>
+            <h6>Já possui conta? <b><a href="login.html">Login</a></b></h6>
+        </form>
+    </section>
+</main>
+
+<script>
+  // Aguarda o envio do formulário
+  document.getElementById("form-cadastro").addEventListener("submit", function (event) {
+    event.preventDefault(); // Impede o envio do formulário
+
+    // Pega os valores dos campos
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    // Verifica se algum está vazio
+    if (!nome || !email || !telefone || !senha) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    // Se passou na validação, redireciona
+    window.location.href = "site.html"; // ou a página que desejar
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tereza Figueiredo Beauty Artist</title>
+    <link rel="stylesheet" href="./css/Login.css">
+</head>
+
+<body>
+
+
+<main id="formulario-main">
+
+        <div class="logo-container-externo">
+            <a href="site.html"> <img src="img/LOGO_REDUZIDA-removebg-preview (1).png" alt="Logo Tereza Figueiredo" id="logo-externa">
+            </a>
+        </div>
+        
+        <section class="principal">
+            <form class="tela-cadastro" id="form-login">
+                <h1>Login</h1>
+
+                <label for="email-input">E-mail:</label>
+                <input type="email" id="email-input" name="email" placeholder="Digite seu e-mail">
+
+                <label for="senha-input">Senha:</label>
+                <input type="password" id="senha-input" name="senha" placeholder="Digite sua senha">
+
+                <button type="submit" id="cad-buton">Login</button>
+                <h6>Não tem conta? <b><a href="cadastro.html">Cadastre-se</a></b></h6>
+            </form>
+        </section>
+
+    </main>
+
+  <!--Autenticaçao de Login-->
+
+<script>
+  document.getElementById("form-login").addEventListener("submit", function(event) {
+    event.preventDefault(); // Impede o envio do formulário
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    // Se o input estiver vazio o if da o aviso!
+
+    if (!email || !senha) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    
+    // Se os campos estão preenchidos, redireciona
+    window.location.href = "site.html"; // Substitua pelo caminho correto
+  });
+</script>
+
+
+</body>
+</html>
