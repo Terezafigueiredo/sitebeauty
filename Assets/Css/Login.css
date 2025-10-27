@@ -16,7 +16,7 @@ body {
     background-color: #FFDAB9;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* <-- MUDE DE 'center' PARA 'flex-start' */
+    align-items: flex-start; 
     padding: 20px; /* Adiciona um respiro nas bordas da tela */
     
     
@@ -45,12 +45,12 @@ body {
     justify-content: center;
     align-items: center;
     
-    /* ADICIONE UMA ALTURA FIXA AQUI */
-    height: 300px; /* <-- Ajuste esta altura como preferir (ex: 120px, 180px) */
+    
+    height: 300px; 
 }
 
 #logo-externa {
-    /* TROQUE 'width' POR ESTAS REGRAS */
+    
     max-width: 100%;     /* Garante uma pequena margem dos lados */
     max-height: 100%;    /* Garante uma pequena margem em cima/baixo */
     height: auto;       /* Mantém a proporção da imagem correta */
