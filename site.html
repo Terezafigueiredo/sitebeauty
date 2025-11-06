@@ -158,7 +158,7 @@
     <!-- Card Sociais -->
     <div class="card">
       <h2>Produções Sociais</h2>
-      <img src="Assets/img/sociais.png" alt="Produções Sociais">
+      <img src="Assets/img/social2 (2).jpeg" alt="Produções Sociais">
 
       <button class="saiba-mais">Saiba mais</button>
       <div class="pacotes">
@@ -178,9 +178,37 @@
 </div>
 
         <!-- div galeria -->
-        <div>
+       <!-- Seção Carrossel de Fotos -->
+<!-- Seção Carrossel de Fotos -->
+<div id="galeria" class="carrossel-container">
+  <h1 class="destaque-titulo">Galeria de Fotos</h1>
+  <div class="carrossel-wrapper">
+    <div class="carrossel-slide">
+      <img src="Assets/img/1.png" alt="Foto 1" />
+      <img src="Assets/img/2.png" alt="Foto 2" />
+      <img src="Assets/img/3.png" alt="Foto 3" />
+      <img src="Assets/img/4.png" alt="Foto 4" />
+      <img src="Assets/img/5.png" alt="Foto 5" />
+      <img src="Assets/img/6.png" alt="Foto 6" />
+      <img src="Assets/img/7.png" alt="Foto 7" />
+      <img src="Assets/img/8.png" alt="Foto 8" />
+      <img src="Assets/img/9.png" alt="Foto 9" />
+      <img src="Assets/img/10.png" alt="Foto 10" />
+      <img src="Assets/img/11.png" alt="Foto 11" />
+      <img src="Assets/img/12.png" alt="Foto 12" />
+      <img src="Assets/img/13.png" alt="Foto 13" />
+      <img src="Assets/img/14.png" alt="Foto 14" />
+      <img src="Assets/img/15.png" alt="Foto 15" />
+      <img src="Assets/img/16.png" alt="Foto 16" />
+      <img src="Assets/img/17.png" alt="Foto 17" />
+      <img src="Assets/img/18.png" alt="Foto 18" />
+      <img src="Assets/img/19.png" alt="Foto 19" />
 
-        </div>
+    </div>
+    <button class="btn anterior">&#10094;</button>
+    <button class="btn proximo">&#10095;</button>
+  </div>
+</div>
 
         <!-- div agendamento -->
         <div>
@@ -199,14 +227,83 @@
 
 
 </footer>
+
+
 <script>
-  document.querySelectorAll(".saiba-mais").forEach(button => {
-    button.addEventListener("click", () => {
-      const pacotes = button.nextElementSibling;
-      pacotes.style.display = pacotes.style.display === "block" ? "none" : "block";
+  const imagens = document.querySelectorAll('.carrossel-slide img');
+  const btnProximo = document.querySelector('.btn.proximo');
+  const btnAnterior = document.querySelector('.btn.anterior');
+  let index = 0;
+  let intervalo;
+
+  function mostrarImagemAtual() {
+    imagens.forEach((img, i) => {
+      img.classList.remove('active');
+      if (i === index) {
+        img.classList.add('active');
+      }
+    });
+  }
+
+  function proximaImagem() {
+    index = (index + 1) % imagens.length;
+    mostrarImagemAtual();
+  }
+
+  function imagemAnterior() {
+    index = (index - 1 + imagens.length) % imagens.length;
+    mostrarImagemAtual();
+  }
+
+  function iniciarAutoPlay() {
+    intervalo = setInterval(proximaImagem, 4000); // troca automática a cada 4s
+  }
+
+  function pararAutoPlay() {
+    clearInterval(intervalo);
+  }
+
+  btnProximo.addEventListener('click', () => {
+    proximaImagem();
+    pararAutoPlay();
+    iniciarAutoPlay();
+  });
+
+  btnAnterior.addEventListener('click', () => {
+    imagemAnterior();
+    pararAutoPlay();
+    iniciarAutoPlay();
+  });
+
+  mostrarImagemAtual();
+  iniciarAutoPlay();
+</script>
+<script>
+  document.querySelectorAll('.saiba-mais').forEach(botao => {
+    botao.addEventListener('click', () => {
+      const cardAtual = botao.closest('.card');
+      const pacotesAtual = cardAtual.querySelector('.pacotes');
+
+      document.querySelectorAll('.card').forEach(card => {
+        if (card !== cardAtual) {
+          const pacotes = card.querySelector('.pacotes');
+          const botaoCard = card.querySelector('.saiba-mais');
+
+          pacotes.classList.remove('ativo');
+          botaoCard.textContent = 'Saiba mais';
+          botaoCard.classList.remove('ativo');
+        }
+      });
+
+      const ativo = pacotesAtual.classList.toggle('ativo');
+      botao.textContent = ativo ? 'Ver menos' : 'Saiba mais';
+      botao.classList.toggle('ativo', ativo);
     });
   });
 </script>
+
+
+
 
 </body>
 </html>
