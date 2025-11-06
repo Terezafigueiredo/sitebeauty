@@ -167,8 +167,8 @@ body{margin: 0;
 .destaque-titulo {
     /* se não for a Montserrat que é uma fonte específica, vai pra sans-serif que tem em todos os pc's */
     font-family: Montserrat,  sans-serif;
-
     color: #ecb3d4;
+    
 }
 /* ====== SEÇÃO SOBRE MIM ====== */
 #sobre-mim {
@@ -248,7 +248,11 @@ body{margin: 0;
 }
 
 .saiba-mais {
+<<<<<<< HEAD
   background-color: #8b8b8a;
+=======
+  background-color: #ecb3d4;
+>>>>>>> b25e96f648f2abdbbaf009a0f886418850d21771
   color: black;
   border: none;
   padding: 10px 15px;
@@ -306,6 +310,7 @@ body{margin: 0;
   line-height: 1.5;
   position: relative;
   padding-left: 20px;
+  
 }
 
 /* Marcador personalizado */
@@ -316,6 +321,7 @@ body{margin: 0;
   color: #8f5624;
   font-weight: bold;
 }
+<<<<<<< HEAD
 .carrossel-wrapper {
   position: relative;
   width: 100vw;
@@ -384,3 +390,61 @@ body{margin: 0;
 .btn.proximo {
   right: 20px;
 }
+=======
+
+/* GALERIA */
+
+
+/* GALERIA */
+
+#galeria {
+    padding: 60px 40px;
+    background-color: #000; /* Fundo preto para as imagens se destacarem */
+    text-align: center;
+}
+
+#galeria h1 {
+    margin-bottom: 40px;
+    font-family: Montserrat, sans-serif;
+}
+
+/* Container principal da galeria */
+.tipos {
+    display: grid;
+    /* 3 colunas, ajustando automaticamente. O minmax garante que as colunas
+       não fiquem menores que 300px e ocupem o máximo de espaço disponível (1fr). */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Espaço entre as fotos */
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+/* Cada item da galeria (onde a foto estará) */
+.tipo {
+    height: 450px;
+    position: relative;
+    overflow: hidden; /* Garante que a imagem não saia da borda */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(236, 179, 212, 0.4);
+    transition: transform 0.3s ease;
+    border: 3px solid #8f5624; /* Borda de destaque */
+}
+
+.tipo:hover {
+    transform: scale(1.03); /* Efeito sutil de zoom ao passar o mouse */
+    box-shadow: 0 6px 15px rgba(236, 179, 212, 0.6);
+}
+
+/* Estilo para a imagem dentro do container .tipo */
+.tipo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o container sem distorcer */
+    transition: opacity 0.3s ease;
+    
+}
+>>>>>>> b25e96f648f2abdbbaf009a0f886418850d21771
