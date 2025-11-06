@@ -201,8 +201,43 @@
         </div>
 
         <!-- div agendamento -->
-        <div>
+        <div id="container-agendamento">
+          <h1 class="destaque-titulo">Agendamento</h1>
+          <p>Preencha os dados e entraremos em contato.</p>
 
+          <form action="#" method="POST" class="container-das-caixas">
+            <div class="caixas">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+
+            <div class="caixas">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="caixas">
+              <label for="servico">Serviço</label>
+              <select id="servico" name="servico">
+                <option value="noiva">Maquiagem de Noiva</option>
+                <option value="debutante">Produção Debutante</option>
+                <option value="social">Produção Social</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="caixas">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Detalhes da data / horário"></textarea>
+            </div>
+
+            <div class="container-do-enviar">
+              <button type="submit" class="tecla-enviar">Enviar</button>
+              
+            </div>
+
+            
+          </form>
         </div>
 
 
