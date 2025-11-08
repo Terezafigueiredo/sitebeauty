@@ -1,0 +1,476 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{margin: 0;
+  padding: 0;
+  background-color: #000;
+
+}
+/* Cabeçalho */
+#cabecalho {
+  display: flex;
+  flex-direction: column;   /* coloca logo em cima e menu embaixo */
+  justify-content: center;  /* centraliza verticalmente */
+  align-items: center;      /* centraliza horizontalmente */
+  padding: 20px 0;          /* espaçamento interno */
+  background-color: #6e5f5f;
+  border-bottom: 2px solid #8f5624;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Logo */
+#logo {
+  height: 120px;
+  margin-bottom: 15px; /* espaço entre logo e menu */
+}
+
+/* Lista de links */
+.lista-links {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* espaçamento entre links */
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+.lista-links a {
+  text-decoration: none;
+  color: #f5f5f5; /* letras claras para contraste */
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem; /* letras maiores */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Linha animada abaixo do link */
+.lista-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background-color: #8f5624; /* cor de destaque */
+  transition: width 0.3s ease;
+}
+
+/* Hover */
+.lista-links a:hover {
+  color: #ecb3d4; /* muda a cor da letra */
+}
+
+.lista-links a:hover::after {
+  width: 100%; /* anima a linha */
+}
+
+/* A classe (.) serve para ser colocada em várias partes do código, então essa seria pra todos os títulos (h1, h2, h3) */
+.destaque-titulo {
+    /* se não for a Montserrat que é uma fonte específica, vai pra sans-serif que tem em todos os pc's */
+    font-family: Montserrat,  sans-serif;
+    color: #ecb3d4;
+    
+}
+/* ====== SEÇÃO SOBRE MIM ====== */
+#sobre-mim {
+    display: flex;                  
+    justify-content: space-between; 
+    align-items: center;            
+    padding: 60px 40px;             /* mais respiro */
+    gap: 40px;                      
+    background-color: #6e5f5f;         /* fundo branco para destacar do rosa */
+    border-radius: 12px;            /* cantos arredondados */
+    margin: 40px auto;              /* espaçamento em relação ao resto */
+    max-width: 1100px;              /* largura máxima centralizada */
+    box-shadow: 0 4px 12px rgba(216, 38, 157, 0.1); /* sombra suave */
+      /* nova borda */
+    border: 3px solid #ecb3d4; /* cor e espessura da borda */
+}
+
+.texto-sobre {
+    flex: 1;
+    max-width: 80%;
+    font-family: Inter, sans-serif;
+    color: #020101;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.texto-sobre h1 {
+    color: #ecb3d4;   /* tom terroso que combina com o pêssego */
+    margin-bottom: 20px;
+}
+
+.foto-sobre img {
+    max-width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        /* nova borda */
+    border: 4px solid #ecb3d4; /* cor e espessura da borda */
+}
+/* ====== SEÇÃO SERVIÇOS ====== */
+#servicos {
+  padding: 60px 40px;
+  text-align: center;
+  
+}
+
+/* Container dos cards */
+.cards-servicos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* quebra em telas menores */
+  margin-top: 30px;
+}
+
+.card {
+  background-color: #6e5f5f;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 300px;
+  min-height: 400px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   /* nova borda */
+  border: 3px solid #ecb3d4; /* cor e espessura da borda */
+}
+
+.card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+   border: 3px solid #ecb3d4; /* cor e espessura da borda */
+}
+
+.saiba-mais {
+
+  background-color: #8b8b8a;
+  background-color: #ecb3d4;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+.saiba-mais.ativo {
+  background-color: #8f5624;
+  color: #fff;
+}
+
+.saiba-mais:hover {
+  background-color: #f7f6f5;
+}
+
+/* pacotes escondidos inicialmente */
+.pacotes {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.pacotes.ativo {
+  max-height: 1000px;
+  opacity: 1;
+}
+/* Título de cada pacote */
+.pacote h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0c0601;              /* cor de destaque */
+  margin: 12px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #d2691e; /* linha abaixo do título */
+  text-transform: uppercase;
+}
+
+/* Lista de itens */
+.pacote ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+/* Cada item */
+.pacote li {
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+  color: #e7dddd;
+  margin-bottom: 6px;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+  
+}
+
+/* Marcador personalizado */
+.pacote li::before {
+  content: "✔";                /* ícone de check */
+  position: absolute;
+  left: 0;
+  color: #8f5624;
+  font-weight: bold;
+}
+
+.carrossel-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carrossel-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carrossel-slide img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  max-width: 600px;
+  height: 500px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  border-radius: 10px;
+}
+
+.carrossel-slide img.active {
+  opacity: 1;
+  z-index: 1;
+}
+.carrossel-container {
+  text-align: center; /* Centraliza tudo dentro do container */
+  margin: 50px auto;
+}
+
+.destaque-titulo {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center; /* Garante centralização do texto */
+  margin-bottom: 20px;
+  color: #ecb3d4;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.btn.anterior {
+  left: 20px;
+}
+
+.btn.proximo {
+  right: 20px;
+}
+
+/* GALERIA */
+
+
+/* GALERIA */
+
+#galeria {
+    padding: 60px 40px;
+    background-color: #000; /* Fundo preto para as imagens se destacarem */
+    text-align: center;
+}
+
+#galeria h1 {
+    margin-bottom: 40px;
+    font-family: Montserrat, sans-serif;
+}
+
+/* Container principal da galeria */
+.tipos {
+    display: grid;
+    /* 3 colunas, ajustando automaticamente. O minmax garante que as colunas
+       não fiquem menores que 300px e ocupem o máximo de espaço disponível (1fr). */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Espaço entre as fotos */
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+/* Cada item da galeria (onde a foto estará) */
+.tipo {
+    height: 450px;
+    position: relative;
+    overflow: hidden; /* Garante que a imagem não saia da borda */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(236, 179, 212, 0.4);
+    transition: transform 0.3s ease;
+    border: 3px solid #8f5624; /* Borda de destaque */
+}
+
+.tipo:hover {
+    transform: scale(1.03); /* Efeito sutil de zoom ao passar o mouse */
+    box-shadow: 0 6px 15px rgba(236, 179, 212, 0.6);
+}
+
+/* Estilo para a imagem dentro do container .tipo */
+.tipo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o container sem distorcer */
+    transition: opacity 0.3s ease;
+    
+}
+
+/* AGENDAMENTO  */
+
+#container-agendamento {
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 800px; /* Limita a largura do formulário */
+    margin: 40px auto; /* Centraliza a seção */
+    color: #f5f5f5; /* Cor do texto geral da seção */
+    
+}
+
+#container-agendamento p {
+    font-family: Inter, sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+   
+}
+
+.container-das-caixas {
+    text-align: left;
+    
+}
+
+.caixas {
+    margin-bottom: 20px;
+    
+}
+
+.caixas label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    color: #f5f5f5;
+}
+
+/* Estilo para inputs, select e area de texto */
+.container-das-caixas input[type="text"],
+.container-das-caixas input[type="email"],
+.container-das-caixas select,
+.container-das-caixas textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #2b2b2b; /* Fundo cinza escuro do input */
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #f5f5f5; /* Cor do texto digitado */
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+.container-do-enviar {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.tecla-enviar { 
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Tecla de Enviar  */
+.tecla-enviar {
+    background-color: #ecb3d4;
+    color: #000;
+}
+/* Hover do Enviar */
+.tecla-enviar:hover {
+    background-color: #f5f5f5;
+}
+
+#depoimentos { /* container do depoimento todo */
+    padding: 60px 40px;
+    text-align: center;
+    background-color: #000; 
+}
+
+.container-depoimentos {
+    display: flex; /* Coloca os depoimentos lado a lado */
+    justify-content: center; /* Centraliza os cards na página */
+    gap: 30px; /* Cria um espaço entre os cards */
+    flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas menores */
+    margin-top: 30px;
+    max-width: 1200px; /* Limita a largura máxima */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.depoimentos-caixa {
+    background-color: #6e5f5f; /* Mesmo fundo cinza do "Sobre Mim" */
+    border: 3px solid #ecb3d4; /* Borda rosa, como nos serviços */
+    border-radius: 12px;
+    padding: 25px;
+    width: 300px; /* Define uma largura para cada card */
+    box-shadow: 0 4px 10px rgba(236, 179, 212, 0.4); /* Sombra rosa suave */
+    text-align: left;
+    box-sizing: border-box; /* Garante que o padding não afete a largura */
+}
+
+.depoimentos-texto {
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    color: #020101; /* Texto escuro, como no "Sobre Mim" */
+    line-height: 1.6;
+    font-style: italic; /* Estilo de citação */
+    margin-bottom: 15px;
+    min-height: 100px; /* Garante uma altura mínima */
+}
+
+.depoimentos-autora {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    color: #0c0601; /* Cor escura para a autora */
+    text-align: right; /* Alinha o nome da autora à direita */
+}
