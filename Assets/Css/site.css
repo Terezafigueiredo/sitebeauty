@@ -471,6 +471,54 @@ body{margin: 0;
 .depoimentos-autora {
     font-family: Montserrat, sans-serif;
     font-weight: 600;
-    color: #0c0601; /* Cor escura para a autora */
-    text-align: right; /* Alinha o nome da autora à direita */
+    color: #0c0601; 
+    text-align: right; 
+}
+
+footer {
+    
+    background-color: #6e5f5f; 
+    padding: 50px 40px;
+    margin-top: 40px; 
+    text-align: center;
+    
+    border-top: 2px solid #8f5624; 
+}
+
+#container-contato h1 {
+    margin-bottom: 30px; 
+    
+}
+
+/* A lista de ícones */
+.contatos-lista {
+    list-style: none; 
+    padding: 0;
+    margin: 0 0 30px 0; 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; /
+    
+}
+
+/* O link de cada ícone */
+.contatos-lista a {
+    color: #ecb3d4; 
+    font-size: 2.5rem; 
+    transition: all 0.3s ease; 
+}
+
+
+.contatos-lista a:hover {
+    color: #f5f5f5; 
+    transform: scale(1.15); 
+}
+
+/* Os textos de informação */
+.atendimento-info {
+    font-family: Inter, sans-serif;
+    color: #f5f5f5; 
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 5px 0; 
 }
