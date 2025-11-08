@@ -1,98 +1,4 @@
-/* propriedadeess  */
 
-/* CODIGO DO BRUNO E GABRIEL */
-
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-header{
-    
-   width: 100%; 
-   height: 180px; 
-    padding-bottom: 20px; 
-   background: linear-gradient(rgb(235, 229, 229), rgb(252, 252, 252)),
-    center ;
-    
-}
-
-
-body {
-    width: 100%;
-    
-}
- #cabecalho {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-}   
-
-
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    
-    align-items: center;
-}
-
-li {
-    margin-top: 20px;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(10, 3, 3);
-}
-.link-login{
-    text-decoration: none;
-    color:#8f5624ec;
-}
-body{
-    margin: 0;
-    padding: 0;
-    background-color: #FFDAB9;
-} */
-
-/* Class  e id's */
-
-/* #logo {
-    width: auto;
-    margin: auto;
-    padding: 0;
-    height: 120px;
-    
-   
-  
-}
-
-.principal {
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#cad-buton {
-    width: 200px;
-    
-}
-
-
-
-
-a{
- color: rgba(3, 3, 3, 0.801);
-} */
-
-
-
-/* CÓDIGO DO THIAGO */
-
-
-/* IMPORTANDO UMA FONTE MANEIRA DO GOOGLE FONTS */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -524,4 +430,47 @@ body{margin: 0;
     background-color: #f5f5f5;
 }
 
+#depoimentos { /* container do depoimento todo */
+    padding: 60px 40px;
+    text-align: center;
+    background-color: #000; 
+}
 
+.container-depoimentos {
+    display: flex; /* Coloca os depoimentos lado a lado */
+    justify-content: center; /* Centraliza os cards na página */
+    gap: 30px; /* Cria um espaço entre os cards */
+    flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas menores */
+    margin-top: 30px;
+    max-width: 1200px; /* Limita a largura máxima */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.depoimentos-caixa {
+    background-color: #6e5f5f; /* Mesmo fundo cinza do "Sobre Mim" */
+    border: 3px solid #ecb3d4; /* Borda rosa, como nos serviços */
+    border-radius: 12px;
+    padding: 25px;
+    width: 300px; /* Define uma largura para cada card */
+    box-shadow: 0 4px 10px rgba(236, 179, 212, 0.4); /* Sombra rosa suave */
+    text-align: left;
+    box-sizing: border-box; /* Garante que o padding não afete a largura */
+}
+
+.depoimentos-texto {
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    color: #020101; /* Texto escuro, como no "Sobre Mim" */
+    line-height: 1.6;
+    font-style: italic; /* Estilo de citação */
+    margin-bottom: 15px;
+    min-height: 100px; /* Garante uma altura mínima */
+}
+
+.depoimentos-autora {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    color: #0c0601; /* Cor escura para a autora */
+    text-align: right; /* Alinha o nome da autora à direita */
+}
