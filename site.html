@@ -86,7 +86,6 @@
     <div class="card">
       <h2>Produções Noivas</h2>
       <img src="Assets/img/noivas.png" alt="Produções para Noivas">
-
       <button class="saiba-mais">Saiba mais</button>
       <div class="pacotes">
         <div class="pacote">
@@ -374,7 +373,24 @@
 </script>
 
 
+<script>
+ const botoesSaibaMais = document.querySelectorAll('.saiba-mais');
 
+botoesSaibaMais.forEach((botao) => {
+  botao.addEventListener('click', () => {
+    // Encontra o container .pacotes relacionado ao botão clicado
+    // Presumo que esteja no mesmo card, ajusta se precisar
+    const card = botao.closest('.card');
+    const pacotes = card.querySelector('.pacotes');
+
+    // Alterna a classe ativo
+    pacotes.classList.toggle('ativo');
+
+    // Opcional: alterna estilo do botão para indicar ativo/inativo
+    botao.classList.toggle('ativo');
+  });
+});
+</script>
 
 </body>
 

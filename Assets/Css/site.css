@@ -90,6 +90,7 @@ body{margin: 0;
     box-shadow: 0 4px 12px rgba(216, 38, 157, 0.1); /* sombra suave */
       /* nova borda */
     border: 3px solid #ecb3d4; /* cor e espessura da borda */
+    flex-wrap: wrap; /* adicionar para responsividade */
 }
 
 .texto-sobre {
@@ -127,6 +128,7 @@ body{margin: 0;
   gap: 30px;
   flex-wrap: wrap; /* quebra em telas menores */
   margin-top: 30px;
+  
 }
 
 .card {
@@ -179,12 +181,14 @@ body{margin: 0;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.5s ease;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  display: block;
 }
 
 .pacotes.ativo {
-  max-height: 1000px;
+  max-height: 1000px; /* valor grande para garantir que o conteúdo caiba */
   opacity: 1;
+ 
 }
 /* Título de cada pacote */
 .pacote h3 {
