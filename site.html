@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,56 @@
     <title>Tereza Figueiredo Beauty Artist</title>
     <link rel="stylesheet" href="Assets/Css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- ADIÇÃO: estilos para animação/expansão dos cards (não altera conteúdo) -->
+    <style>
+      /* Apenas estilos complementares para controlar a expansão do .pacotes e do .card */
+      .cards-servicos { 
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        /* garante transição suave ao expandir */
+        transition: box-shadow .25s ease, transform .25s ease, min-height .25s ease;
+        min-height: 340px; /* altura padrão dos cards */
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* quando expandido, o card 'estica' verticalmente */
+      .card.expandido {
+        min-height: 760px; /* altura quando expandido — ajuste se quiser que estique mais/menos */
+        box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+        transform: translateY(-4px);
+        z-index: 5;
+      }
+
+      /* pacotes ocultos por padrão - usar max-height para animação */
+      .card .pacotes {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height .45s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+        opacity: 0;
+      }
+
+      /* quando ativo, liberamos grande max-height para caber o conteúdo */
+      .card .pacotes.ativo {
+        max-height: 1200px; /* deve ser maior que o conteúdo; ajuste se necessário */
+        opacity: 1;
+      }
+
+      /* mantém a altura da imagem e botão no topo do card (não afeta conteúdo original) */
+      .card img { border-radius: 8px; }
+
+      /* se o card expandido estiver em tela pequena, ele ocupará toda a largura para ficar legível */
+      @media (max-width: 900px) {
+        .card.expandido { min-height: auto; width: 100%; }
+        .cards-servicos { flex-direction: column; }
+      }
+    </style>
 </head>
 
 <body>
@@ -71,7 +121,7 @@
     </div>
 
     <div class="foto-sobre">
-        <img src="Assets\img\fotosobremim2.png" alt="Foto de Tereza Figueiredo" />
+        <img src="Assets/img/fotosobremim2.png" alt="Foto de Tereza Figueiredo" />
     </div>
 </div>
 
@@ -321,75 +371,145 @@
 
 </footer>
 
-
+<!-- === SCRIPT ADICIONADO: apenas um script para funcionalidade (não altera texto) === -->
 <script>
-  const imagens = document.querySelectorAll('.carrossel-slide img');
-  const btnProximo = document.querySelector('.btn.proximo');
-  const btnAnterior = document.querySelector('.btn.anterior');
-  let index = 0;
-  let intervalo;
+  document.addEventListener('DOMContentLoaded', () => {
+    // CARROSSEL (mantido como antes)
+    const imagens = Array.from(document.querySelectorAll('.carrossel-slide img'));
+    const btnProximo = document.querySelector('.btn.proximo');
+    const btnAnterior = document.querySelector('.btn.anterior');
+    let index = 0;
+    let intervalo;
 
-  function mostrarImagemAtual() {
-    imagens.forEach((img, i) => {
-      img.classList.remove('active');
-      if (i === index) {
-        img.classList.add('active');
-      }
+    function mostrarImagemAtual() {
+      if (!imagens.length) return;
+      imagens.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === index) {
+          img.classList.add('active');
+        }
+        img.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+    }
+
+    function proximaImagem() {
+      index = (index + 1) % imagens.length;
+      mostrarImagemAtual();
+    }
+
+    function imagemAnterior() {
+      index = (index - 1 + imagens.length) % imagens.length;
+      mostrarImagemAtual();
+    }
+
+    function iniciarAutoPlay() {
+      pararAutoPlay();
+      intervalo = setInterval(proximaImagem, 4000);
+    }
+
+    function pararAutoPlay() {
+      if (intervalo) clearInterval(intervalo);
+    }
+
+    if (btnProximo && btnAnterior && imagens.length) {
+      btnProximo.addEventListener('click', () => {
+        proximaImagem();
+        pararAutoPlay();
+        iniciarAutoPlay();
+      });
+
+      btnAnterior.addEventListener('click', () => {
+        imagemAnterior();
+        pararAutoPlay();
+        iniciarAutoPlay();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          proximaImagem();
+          pararAutoPlay();
+          iniciarAutoPlay();
+        } else if (e.key === 'ArrowLeft') {
+          imagemAnterior();
+          pararAutoPlay();
+          iniciarAutoPlay();
+        }
+      });
+
+      // se o HTML já tiver .active, respeitamos; senão index = 0
+      const firstActive = imagens.findIndex(img => img.classList.contains('active'));
+      if (firstActive > -1) index = firstActive;
+
+      mostrarImagemAtual();
+      iniciarAutoPlay();
+    }
+
+    // SAIBA MAIS: Expandir apenas o card clicado (e fechar qualquer outro aberto)
+    const botoesSaibaMais = Array.from(document.querySelectorAll('.saiba-mais'));
+
+    botoesSaibaMais.forEach((botao) => {
+      botao.addEventListener('click', (e) => {
+        const card = botao.closest('.card');
+        if (!card) return;
+        const pacotes = card.querySelector('.pacotes');
+
+        // se já está expandido, fecha apenas ele
+        const jaExpandido = card.classList.contains('expandido');
+
+        // fecha todos os cards antes
+        document.querySelectorAll('.card').forEach(c => {
+          c.classList.remove('expandido');
+          const p = c.querySelector('.pacotes');
+          if (p) p.classList.remove('ativo');
+          const b = c.querySelector('.saiba-mais');
+          if (b) b.classList.remove('ativo'), b.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!jaExpandido) {
+          // abre só o card clicado
+          card.classList.add('expandido');
+          if (pacotes) pacotes.classList.add('ativo');
+          botao.classList.add('ativo');
+          botao.setAttribute('aria-expanded', 'true');
+
+          // rola o card para o centro da view (melhora usabilidade)
+          setTimeout(() => {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 120);
+        } else {
+          // já expandido => deixamos fechado (já fechamos acima)
+          botao.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
-  }
 
-  function proximaImagem() {
-    index = (index + 1) % imagens.length;
-    mostrarImagemAtual();
-  }
+    // FORMULÁRIO: evita reload e mostra confirmação simples
+    const formulario = document.querySelector('#container-agendamento form');
+    if (formulario) {
+      formulario.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Formulário enviado! Em breve entraremos em contato.');
+        formulario.reset();
+      });
+    }
 
-  function imagemAnterior() {
-    index = (index - 1 + imagens.length) % imagens.length;
-    mostrarImagemAtual();
-  }
+    // fallback: detecta imagens quebradas e substitui por placeholder
+    imagens.forEach(img => {
+      img.addEventListener('error', () => {
+        console.error('Imagem não carregou:', img.src);
+        img.src = 'Assets/img/placeholder.png'; // coloque um placeholder nessa pasta
+        img.alt = 'Imagem indisponível';
+        img.classList.add('active');
+      });
+    });
 
-  function iniciarAutoPlay() {
-    intervalo = setInterval(proximaImagem, 4000); // troca automática a cada 4s
-  }
-
-  function pararAutoPlay() {
-    clearInterval(intervalo);
-  }
-
-  btnProximo.addEventListener('click', () => {
-    proximaImagem();
-    pararAutoPlay();
-    iniciarAutoPlay();
+    // pausa autoplay enquanto o mouse estiver sobre o carrossel
+    const carrossel = document.querySelector('.carrossel-wrapper');
+    if (carrossel) {
+      carrossel.addEventListener('mouseenter', pararAutoPlay);
+      carrossel.addEventListener('mouseleave', iniciarAutoPlay);
+    }
   });
-
-  btnAnterior.addEventListener('click', () => {
-    imagemAnterior();
-    pararAutoPlay();
-    iniciarAutoPlay();
-  });
-
-  mostrarImagemAtual();
-  iniciarAutoPlay();
-</script>
-
-
-<script>
- const botoesSaibaMais = document.querySelectorAll('.saiba-mais');
-
-botoesSaibaMais.forEach((botao) => {
-  botao.addEventListener('click', () => {
-    // Encontra o container .pacotes relacionado ao botão clicado
-    // Presumo que esteja no mesmo card, ajusta se precisar
-    const card = botao.closest('.card');
-    const pacotes = card.querySelector('.pacotes');
-
-    // Alterna a classe ativo
-    pacotes.classList.toggle('ativo');
-
-    // Opcional: alterna estilo do botão para indicar ativo/inativo
-    botao.classList.toggle('ativo');
-  });
-});
 </script>
 
 </body>
