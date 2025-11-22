@@ -28,55 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="Assets/Css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- ADIÇÃO: estilos para animação/expansão dos cards (não altera conteúdo) -->
-    <style>
-      /* Apenas estilos complementares para controlar a expansão do .pacotes e do .card */
-      .cards-servicos { 
-        display: flex;
-        gap: 18px;
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
-
-      .card {
-        /* garante transição suave ao expandir */
-        transition: box-shadow .25s ease, transform .25s ease, min-height .25s ease;
-        min-height: 340px; /* altura padrão dos cards */
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* quando expandido, o card 'estica' verticalmente */
-      .card.expandido {
-        min-height: 760px; /* altura quando expandido — ajuste se quiser que estique mais/menos */
-        box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-        transform: translateY(-4px);
-        z-index: 5;
-      }
-
-      /* pacotes ocultos por padrão - usar max-height para animação */
-      .card .pacotes {
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height .45s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
-        opacity: 0;
-      }
-
-      /* quando ativo, liberamos grande max-height para caber o conteúdo */
-      .card .pacotes.ativo {
-        max-height: 1200px; /* deve ser maior que o conteúdo; ajuste se necessário */
-        opacity: 1;
-      }
-
-      /* mantém a altura da imagem e botão no topo do card (não afeta conteúdo original) */
-      .card img { border-radius: 8px; }
-
-      /* se o card expandido estiver em tela pequena, ele ocupará toda a largura para ficar legível */
-      @media (max-width: 900px) {
-        .card.expandido { min-height: auto; width: 100%; }
-        .cards-servicos { flex-direction: column; }
-      }
-    </style>
+    
 </head>
 
 <body>
